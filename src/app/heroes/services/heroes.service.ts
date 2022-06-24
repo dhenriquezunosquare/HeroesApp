@@ -21,7 +21,18 @@ export class HeroesService {
 
   getHeroeByFilter(filter:string){
     return this.http.get<Heroes[]>(this.baseUrl+`/heroes?q=${filter}&limit=5`)
-    
+  }
+
+  postHeroe(heroe:Heroes){
+    return this.http.post<Heroes>(this.baseUrl+'/heroes',heroe);
+  }
+
+  putHeroe(heroe:Heroes){
+    return this.http.put<Heroes>(this.baseUrl+'/heroes/'+heroe.id,heroe);
+  }
+
+  deleteHeroe(id:string){
+    return this.http.delete(this.baseUrl+'/heroes/'+id);
   }
 
 }
